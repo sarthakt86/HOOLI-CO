@@ -54,12 +54,21 @@
         </div>
     </div>
     <script>
-        // JavaScript function to display an alert when a link is clicked
+
+        // JavaScript function to log the clicked link and highlight it temporarily
         function linkClicked(event) {
             event.preventDefault(); // Prevent the default link action
-            alert("You clicked on: " + event.target.closest("a").innerText);
-            window.location.href = event.target.closest("a").href; // Redirect to the link
+            const linkElement = event.target.closest("a"); // Get the clicked link element
+            console.log("Link clicked:", linkElement.innerText); // Log the link text to the console
+            
+            // Temporarily change the background color of the link
+            linkElement.style.backgroundColor = "yellow";
+            setTimeout(() => {
+                linkElement.style.backgroundColor = ""; // Revert the background color after 500ms
+                window.location.href = linkElement.href; // Redirect to the link's URL
+            }, 500);
         }
+    
 
         // Attach the function to all "Next up" links on page load
         window.onload = function () {
