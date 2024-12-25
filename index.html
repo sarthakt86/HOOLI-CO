@@ -53,6 +53,21 @@
             </div>
         </div>
     </div>
-</body>
+    <script>
+        // JavaScript function to display an alert when a link is clicked
+        function linkClicked(event) {
+            event.preventDefault(); // Prevent the default link action
+            alert("You clicked on: " + event.target.closest("a").innerText);
+            window.location.href = event.target.closest("a").href; // Redirect to the link
+        }
 
+        // Attach the function to all "Next up" links on page load
+        window.onload = function () {
+            const links = document.querySelectorAll(".next-steps-body .step a");
+            links.forEach(link => {
+                link.addEventListener("click", linkClicked);
+            });
+        };
+    </script>
+</body>
 </html>
